@@ -3,6 +3,7 @@ package springbootreactiveproject.resactive.contoller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.AccessType;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springbootreactiveproject.resactive.model.Product;
@@ -48,6 +49,15 @@ public class DataContoller {
     @GetMapping("/delete/{id}")
     public String delteById(@PathVariable String id){
         productRepository.deleteById(id).subscribe();
+        return "index";
+    }
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable String id){
+        Product product=new Product();
+        product.setId(id);
+        product.setPrice(1111);
+        product.setDescription("test");
+        productRepository.save(product).subscribe();
         return "index";
     }
 }
