@@ -27,6 +27,7 @@ product1.setDescription("s")*/;
 
     }
    public Flux<Product> findAll(){
+
         return productRepository.findAll();
     }
 }

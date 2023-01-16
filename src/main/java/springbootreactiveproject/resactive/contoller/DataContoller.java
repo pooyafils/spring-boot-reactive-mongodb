@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springbootreactiveproject.resactive.model.Product;
+import springbootreactiveproject.resactive.repository.ProductRepository;
 import springbootreactiveproject.resactive.service.ProductService;
 
 @Controller
@@ -13,7 +14,8 @@ import springbootreactiveproject.resactive.service.ProductService;
 public class DataContoller {
 @Autowired
     ProductService productService;
-
+@Autowired
+    ProductRepository productRepository;
     @GetMapping
     public String index(){
         return "index";
@@ -32,5 +34,15 @@ public class DataContoller {
         model.addAttribute("all",productService.findAll());
         System.out.println(productService.findAll());
      return   "showAll";
+    }
+    @GetMapping("/findPrice")
+    public String findDescription(Model model) {
+        model.addAttribute("info",productRepository.findByPrice(new Integer(100)));
+        return "findPrice";
+    }
+    @GetMapping("/findDescription")
+    public String findBy(Model model){
+        model.addAttribute("fi",productRepository.findByDescription("a51"));
+        return "findDescription";
     }
 }
