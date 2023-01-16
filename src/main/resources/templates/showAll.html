@@ -6,12 +6,15 @@
 <body>
 <div class="container">
 <table>
-    <tr><th>price</th>
+    <tr><th>id</th><th>price</th>
     <th>description</th>
     </tr>
-    <th:block th:each=" product : ${all}">
-    <tr><td th:text="${product.price}"></td>
+        <th:block th:each=" product : ${all}">
+            <tr><td th:text="${product.id}"></td>
+
+        <td th:text="${product.price}"></td>
         <td th:text="${product.description}"></td>
+                <td> <a th:href="@{/delete/{id}(id=${product.id})}" class="dropdown-item "><span class="">delete</span> </a></td>
     </tr>
     </th:block>
 </table>

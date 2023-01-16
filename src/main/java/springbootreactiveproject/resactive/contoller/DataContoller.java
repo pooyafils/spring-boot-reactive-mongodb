@@ -45,4 +45,9 @@ public class DataContoller {
         model.addAttribute("fi",productRepository.findByDescription("a51"));
         return "findDescription";
     }
+    @GetMapping("/delete/{id}")
+    public String delteById(@PathVariable String id){
+        productRepository.deleteById(id).subscribe();
+        return "index";
+    }
 }
