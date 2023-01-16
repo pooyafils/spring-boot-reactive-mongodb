@@ -14,4 +14,8 @@ public class DataContoller {
     public String index(){
         return "index";
     }
+    @GetMapping("/insert")
+    public String insertData(){
+        return "insert";
+    }
 }
