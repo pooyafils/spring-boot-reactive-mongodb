@@ -10,7 +10,20 @@
 </head>
 <body>
 <div class="container">
-    <h3 class="h-25"> please inter the data</h3>
+    <h3 class="h-25"> please enter the data</h3>
+    <div class=" input-unit">
+        <div class="input-content">
+            <form  th:action="@{/insertproduct}" th:object="${obj}" method="post">
+                <p>please Enter unit of measure</p>
+                <input type="text" th:name="price" class="input-text-field"  />
+
+                <input type="text" th:name="description" class="input-text-field"  />
+
+                <input type="submit" value="submit" class="input-submit button1">
+            </form>
+        </div>
+
+    </div>
 
 </div>
 </body>
